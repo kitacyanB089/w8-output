@@ -1,0 +1,87 @@
+@charset "utf-8";
+
+h2.indent {
+    margin-left: 20px;
+}
+
+.grid-wrapper-4x4 {
+    border: 15px solid #333;
+    margin-bottom: 20px;
+    background: repeating-linear-gradient(
+      130deg,
+      #000 ,
+      #000 3px,
+      #4a494a 2px,
+      #eb89e0 5px
+    );
+}
+
+.grid-wrapper-2x2 {
+    border: 20px solid #333;
+    margin-bottom: 20px;
+    background: repeating-linear-gradient(
+      130deg,
+      #000 ,
+      #000 3px,
+      #4a494a 2px,
+      #89baeb 5px
+    );
+  }
+
+  .grid-wrapper-6x1 {
+    border: 20px solid #333;
+    margin-bottom: 20px;
+    background: repeating-linear-gradient(
+      130deg,
+      #000 ,
+      #000 3px,
+      #4a494a 2px,
+      #89ebaa 5px
+    );
+  }
+    
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+}
+
+.grid-4x4 > div {
+  flex: 0 0 calc(25% - 10px);
+  height: 70px;
+  background: #d56bea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff; /* 文字色を白に */
+  border-radius: 10px; /* すべての角を丸く */
+  font-size: 20px;
+}
+
+
+.grid-2x2 > div {
+    flex: 0 0 calc(50% - 10px);
+    height: 70px;
+    background: #6bbeea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff; /* 文字色を白に */
+    border-radius: 10px; /* すべての角を丸く */
+    font-size: 20px;
+}
+
+.grid-6x1 > div {
+    flex: 0 0 calc(16.5% - 10px);
+    height: 70px;
+    background: #6beaa4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff; /* 文字色を白に */
+    border-radius: 10px; /* すべての角を丸く */
+    font-size: 20px;
+}
