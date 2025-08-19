@@ -1,87 +1,204 @@
 @charset "utf-8";
 
-h2.indent {
-    margin-left: 20px;
+/*
+Base style
+*/
+body {
+    font-family: 'Noto Sans JP',"Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    font-size:15px;
+    line-height: 1.5;
+    color: #333;
 }
 
-.grid-wrapper-4x4 {
-    border: 15px solid #333;
-    margin-bottom: 20px;
-    background: repeating-linear-gradient(
-      130deg,
-      #000 ,
-      #000 3px,
-      #4a494a 2px,
-      #eb89e0 5px
-    );
+/*
+section
+*/
+.section-headline {
+  text-align: left;
+  font-size: 40px;
+  font-weight: bold;
+  /*margin: 0 0 40px;*/
+}
+.section-subtitle {
+  margin: 0 0 20px;
+  font-size: 30px;
+}
+.section-indent {
+  margin: 0 0 20px;
+  padding: 0px 20px;
+  font-size: 20px;
 }
 
-.grid-wrapper-2x2 {
-    border: 20px solid #333;
-    margin-bottom: 20px;
-    background: repeating-linear-gradient(
-      130deg,
-      #000 ,
-      #000 3px,
-      #4a494a 2px,
-      #89baeb 5px
-    );
-  }
-
-  .grid-wrapper-6x1 {
-    border: 20px solid #333;
-    margin-bottom: 20px;
-    background: repeating-linear-gradient(
-      130deg,
-      #000 ,
-      #000 3px,
-      #4a494a 2px,
-      #89ebaa 5px
-    );
-  }
-    
+/*
+grid
+*/
 .grid {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 13px;
 }
-
-.grid-4x4 > div {
-  flex: 0 0 calc(25% - 10px);
-  height: 70px;
+.grid.grid-col-4x4 {
+  background: hsl(0, 0%, 2%);
+  border: 20px solid #000;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 70px);
+  gap: 13px;
+}
+.grid.grid-col-4x4 > div {
   background: #d56bea;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  color: #fff; /* 文字色を白に */
-  border-radius: 10px; /* すべての角を丸く */
+  color: #fff;
+  border-radius: 10px;
   font-size: 20px;
 }
 
-
-.grid-2x2 > div {
-    flex: 0 0 calc(50% - 10px);
-    height: 70px;
-    background: #6bbeea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: #fff; /* 文字色を白に */
-    border-radius: 10px; /* すべての角を丸く */
-    font-size: 20px;
+.grid.grid-col-2x2 {
+  background: hsl(0, 0%, 2%);
+  border: 20px solid #000;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 70px);
+  gap: 13px;
 }
 
-.grid-6x1 > div {
-    flex: 0 0 calc(16.5% - 10px);
-    height: 70px;
+.grid.grid-col-2x2 > div {
+  background: #6bbeea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.grid.grid-col-6x1 {
+  background: hsl(0, 0%, 2%);
+  border: 20px solid #000;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(1, 70px);
+  gap: 13px;
+}
+
+.grid.grid-col-6x1 > div {
     background: #6beaa4;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #fff; /* 文字色を白に */
-    border-radius: 10px; /* すべての角を丸く */
+    color: #fff;
+    border-radius: 10px;
     font-size: 20px;
 }
+
+/*
+ログインフォーム
+*/
+input, button {
+  cursor: pointer;
+}
+button {
+  border: 0;
+}
+
+.signin-container {
+  background: hsla(0, 0%, 0%, 0.805);
+}
+
+.signin-form {
+  padding: 0px 40px 0px;
+}
+
+.signin-form h3 {
+  text-align: left;
+  color: #fff;
+  padding-top: 40px;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+/*
+form-group
+*/
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 20px;
+}
+
+/*
+input
+*/
+.input {
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #fff;
+  background-color: #444;
+  min-width: auto;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  color:#fff;
+}
+
+@media screen and (max-width: 480px) {
+  .input {
+    min-width: auto;
+    width: 100%;
+  }
+}
+
+/*
+signin-btn
+*/
+.signin-btn {
+  border-radius: 10px;
+  padding: 15px;
+  width: 100%;
+  background: #135ce5;
+  color: white;
+  border: none;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(107, 190, 234, 0.4);
+}
+
+.signin-btn:active {
+  transform: translateY(0);
+}
+
+/*
+form-footer
+*/
+.form-footer label {
+  margin-bottom: 10px;
+  color: gray;
+  font-size: 20px;
+}
+
+.form-footer a {
+  color: #6bbeea;
+  text-decoration: none;
+  font-size: 20px;
+  transition: color 0.3s ease;
+}
+
+.form-footer a:hover {
+  color: gold;
+  text-decoration: underline;
+}
+
