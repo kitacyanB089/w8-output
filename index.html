@@ -49,6 +49,9 @@
           <div class="form-group">
             <button type="submit" class="signin-btn">Sign in</button>
           </div>
+          <div class="form-group">
+            <button type="button" id="clearStorageBtn" class="signin-btn">Clear saved data</button>
+          </div>
           <div class="form-footer">
             <label>Don't have an account yet? </label>
             <a href="#" target="_blank">Sign up</a>
@@ -59,5 +62,52 @@
       </div>
     </div>
   </section>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // HTML内の id="userName" な要素を取得（見つからなければ null）
+      var emailInput = document.getElementById('youremail');
+      var passwordInput = document.getElementById('password');
+      var form = document.querySelector('.form');
+      var clearBtn = document.getElementById('clearStorageBtn');
+
+      // 復元（ページ読み込み時）
+      // 安全チェック: emailInput・passwordInputが存在する場合のみ処理を行う
+      if (emailInput && passwordInput) {
+        try {
+          //ブラウザのLocal Storageから、指定キーの「文字列」を取得する関数
+          var savedEmail = localStorage.getItem('signinEmail');
+          var savedPassword = localStorage.getItem('signinPassword');
+          // 値を書き換える　入力欄の表示値をsavedEmailにする
+          if (savedEmail) emailInput.value = savedEmail; // 値がある時だけ上書き
+          if (savedPassword) passwordInput.value = savedPassword;
+        } catch (e) {}
+      }
+
+      // 保存（フォーム送信時）
+      // 安全チェック: form・emailInput・passwordInputが全て存在する場合のみ処理を行う
+      // どれか一つでも取得に失敗してnullだと、イベント登録時にエラーになるため
+      if (form && emailInput && passwordInput) {
+        form.addEventListener('submit', function () {
+          try {
+            // 値を保存する
+            localStorage.setItem('signinEmail', emailInput.value || '');
+            localStorage.setItem('signinPassword', passwordInput.value || '');
+          } catch (e) {}
+        });
+      }
+
+      // Local Storage全消去とフォーム初期化
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+          if (confirm('保存されたデータをすべて削除しますか？')) {
+            try { localStorage.clear(); } catch (e) {}
+            if (emailInput) emailInput.value = '';
+            if (passwordInput) passwordInput.value = '';
+            alert('保存データを削除しました');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
